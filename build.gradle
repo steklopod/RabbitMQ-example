@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group = 'ru.steklopod'
+version = '0.0.1-SNAPSHOT'
+description = 'rabbitmq-example'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+     bootVersion = '2.1.0.RELEASE'
+     jackson = '2.9.7'
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-amqp:${bootVersion}"
+    compile "com.fasterxml.jackson.core:jackson-core:${jackson}"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jackson}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jackson}"
+    provided "org.projectlombok:lombok:1.18.4"
+    testCompile "org.springframework.boot:spring-boot-starter-test:${bootVersion}"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
